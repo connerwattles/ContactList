@@ -14,7 +14,7 @@ Contact Manager is a simple React application for managing contacts. It allows u
 2. Navigate into the project directory: `cd contact-manager`
 3. Install the dependencies: `npm install`
 4. Start the application: `npm start`
-5. Open your browser and visit `http://localhost:3000`
+5. Open your browser and visit `http://localhost:5174`
 
 ## Usage
 
