@@ -86,6 +86,17 @@ function Contacts() {
         });
     };
 
+    const deleteContact = (index) => {
+        // Create a new copy of the contacts state
+        const updatedContacts = [...contacts];
+
+        // Remove the contact at the specified index
+        updatedContacts.splice(index, 1);
+
+        // Update the contacts state
+        setContacts(updatedContacts);
+    };
+
     return (
         <div>
             <form onSubmit={editingContact !== null ? updateContact : addContact}>
