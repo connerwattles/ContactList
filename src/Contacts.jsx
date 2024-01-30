@@ -14,6 +14,7 @@ function Contacts() {
 
     const [editingContact, setEditingContact] = useState(null);
 
+    // Function to allow for toggling between edit and edit a different contact
     const editContact = (index) => {
         if (editingContact === index) {
             setEditingContact(null);
@@ -27,8 +28,11 @@ function Contacts() {
         setContacts(storedContacts);
     }, []);
 
+    // Function to add a new contact
     const addContact = (event) => {
         event.preventDefault();
+        
+        // Create a new contact object from the input values
         const newContact = {
             name: event.target.name.value,
             address: event.target.address.value,
@@ -36,7 +40,11 @@ function Contacts() {
             email: event.target.email.value,
             category: event.target.category.value
         };
+        
+        // Add the new contact to the contacts state
         setContacts([...contacts, newContact]);
+        
+        // Clear the form fields
         setContact({
             name: '',
             address: '',
@@ -46,9 +54,14 @@ function Contacts() {
         });
     };
 
+    // Function to update an existing contact
     const updateContact = (event) => {
         event.preventDefault();
+        
+        // Create a copy of the contacts state
         const updatedContacts = [...contacts];
+        
+        // Update the contact at the editingContact index with the new values
         updatedContacts[editingContact] = {
             name: event.target.name.value,
             address: event.target.address.value,
@@ -56,8 +69,14 @@ function Contacts() {
             email: event.target.email.value,
             category: event.target.category.value
         };
+        
+        //Update the contacts state with the updated contacts
         setContacts(updatedContacts);
+        
+        // Reset the editingContact state
         setEditingContact(null);
+        
+        // Clear the form fields
         setContact({
             name: '',
             address: '',
