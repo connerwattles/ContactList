@@ -101,6 +101,11 @@ function Contacts() {
         setContacts(updatedContacts);
     };
 
+    const clearContacts = () => {
+        localStorage.clear();
+        location.reload();
+    };
+
     return (
         <div>
             <form onSubmit={editingContact !== null ? updateContact : addContact}>
@@ -138,6 +143,7 @@ function Contacts() {
                     </div>
                 ))}      
             </div>
+            <button onClick={() => clearContacts()}>Clear All Contacts</button>
         </div>
     )
 }
