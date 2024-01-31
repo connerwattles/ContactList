@@ -10,7 +10,10 @@ function Contacts() {
         category: ''
     });
 
-    const [contacts, setContacts] = useState([]);
+    const [contacts, setContacts] = useState(() => {
+        const contactsJson = localStorage.getItem('contacts');
+        return contactsJson !== null ? JSON.parse(contactsJson) : [];
+    });
 
     const [editingContact, setEditingContact] = useState(null);
 
@@ -24,9 +27,10 @@ function Contacts() {
     };
 
     useEffect(() => {
-        const storedContacts = JSON.parse(localStorage.getItem('contacts')) || [];
-        setContacts(storedContacts);
-    }, []);
+        const contactsJson = JSON.stringify(contacts);
+
+        localStorage.setItem('contacts', contactsJson);
+    }, [contacts]);
 
     // Function to add a new contact
     const addContact = (event) => {
@@ -134,7 +138,6 @@ function Contacts() {
                     </div>
                 ))}      
             </div>
-            <button onClick={() => localStorage.clear()}>Clear Local Storage</button>
         </div>
     )
 }
