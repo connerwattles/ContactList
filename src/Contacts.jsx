@@ -17,17 +17,6 @@ function Contacts() {
 
     const [editingContact, setEditingContact] = useState(null);
 
-    // Function to allow for toggling between edit and edit a different contact
-    const editContact = (index) => {
-        if (editingContact === index) {
-            setEditingContact(null);
-            setContact({ name: '', address: '', phone: '', email: '', category: '' });
-        } else {
-            setEditingContact(index);
-            setContact(contacts[index]);
-        }
-    };
-
     useEffect(() => {
         const contactsJson = JSON.stringify(contacts);
 
@@ -58,6 +47,17 @@ function Contacts() {
             email: '',
             category: ''
         });
+    };
+
+    // Function to allow for toggling between edit and edit a different contact
+    const editContact = (index) => {
+        if (editingContact === index) {
+            setEditingContact(null);
+            setContact({ name: '', address: '', phone: '', email: '', category: '' });
+        } else {
+            setEditingContact(index);
+            setContact(contacts[index]);
+        }
     };
 
     // Function to update an existing contact
