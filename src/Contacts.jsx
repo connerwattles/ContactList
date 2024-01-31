@@ -21,8 +21,10 @@ function Contacts() {
     const editContact = (index) => {
         if (editingContact === index) {
             setEditingContact(null);
+            setContact({ name: '', address: '', phone: '', email: '', category: '' });
         } else {
             setEditingContact(index);
+            setContact(contacts[index]);
         }
     };
 
